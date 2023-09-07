@@ -24,3 +24,25 @@ A linked list is a linear data structure where each element is a separate object
 2. A reference (or "link") to the next node in the sequence.
 
 [Explanation](/docs/linkedlist.md)
+
+##  5 - Binary Search Tree (BST)
+
+A Binary Search Tree is a binary tree data structure where each node has at most two children, referred to as the left child and the right child. For each node, all elements in the left subtree are less than the node, and all elements in the right subtree are greater than the node.
+
+#### Diagram:
+
+```
+       5
+     /   \
+    3     7
+   / \   / \
+  1   4 6   8
+```
+
+In the above diagram:
+- Node `5` is the root.
+- `3` and `7` are children of `5`.
+- `1` and `4` are children of `3`.
+- `6` and `8` are children of `7`.
+
+[Explanation](/docs/bst.md)
