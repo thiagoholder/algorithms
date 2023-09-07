@@ -1,0 +1,77 @@
+
+#### Node Structure:
+
+```csharp
+public class Node
+{
+    public int Value { get; set; }
+    public Node Next { get; set; }
+
+    public Node(int value)
+    {
+        Value = value;
+        Next = null;
+    }
+}
+```
+In the above code:
+- `Value` is the data part of the node.
+- `Next` is the reference to the next node in the list. If it's the last node, `Next` will be `null`.
+
+#### Diagram:
+
+```
+Node1 [Value: 1 | Next: ref to Node2] --> Node2 [Value: 2 | Next: ref to Node3] --> Node3 [Value: 3 | Next: null]
+```
+
+### Detecting a Cycle:
+
+A cycle in a linked list occurs if any node's `Next` reference points to a previous node in the list, which means there's a loop in the list.
+
+#### Floyd's Cycle-Finding Algorithm:
+
+To detect a cycle, we use Floyd's Cycle-Finding Algorithm, also known as the "Tortoise and the Hare" approach. The idea is to have two pointers, one moving slow (tortoise) and the other moving fast (hare). If there's a cycle, the hare will eventually catch up to the tortoise.
+
+```csharp
+public static class LinkedListCycleDetector
+{
+    public static bool HasCycle(Node head)
+    {
+        if (head == null) return false;
+
+        Node tortoise = head;
+        Node hare = head;
+
+        while (hare != null && hare.Next != null)
+        {
+            tortoise = tortoise.Next;      // Moves one step
+            hare = hare.Next.Next;         // Moves two steps
+
+            if (tortoise == hare) return true;  // Cycle detected
+        }
+
+        return false;  // No cycle detected
+    }
+}
+```
+
+#### Diagram for Cycle Detection:
+
+```
+Node1 [1] --> Node2 [2] --> Node3 [3] --> Node4 [4]
+                        ^                       |
+                        |                       v
+                        +-----------------------+
+```
+
+In the above diagram, Node4's `Next` points back to Node2, creating a cycle.
+
+When using the Tortoise and Hare approach:
+- Initially, both are at Node1.
+- After the first iteration, Tortoise is at Node2, and Hare is at Node3.
+- After the second iteration, Tortoise is at Node3, and Hare is back at Node2.
+- After the third iteration, Tortoise is at Node4, and Hare is at Node4. They meet, indicating a cycle.
+
+### Conclusion:
+
+The linked list is a fundamental data structure that allows for dynamic size and efficient insertions/deletions. Detecting cycles in a linked list is a common challenge, and Floyd's Cycle-Finding Algorithm provides an efficient solution. The "Tortoise and the Hare" approach is a clever way to detect cycles without using extra space, making it optimal for this challenge.
