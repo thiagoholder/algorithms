@@ -1,4 +1,4 @@
-﻿namespace LinkedList
+﻿namespace DataStructure
 {
     internal class Program
     {

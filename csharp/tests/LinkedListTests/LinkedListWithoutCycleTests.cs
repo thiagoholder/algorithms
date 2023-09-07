@@ -1,4 +1,4 @@
-using LinkedList;
+using DataStructure;
 
 namespace LinkedListTests;
 
@@ -7,7 +7,7 @@ public class LinkedListWithoutCycleTests
     [Fact]
     public void EmptyLinkedList_ReturnFalse()
     {
-        var result = LinkedListCycleDetector.HasCycle(head: null);
+        var result = LinkedListCycleDetector.HasCycle(null);
 
         Assert.False(result);
     }

@@ -1,3 +1,8 @@
+### Data Structure: Singly Linked List
+
+A singly linked list is a linear data structure where each element is a separate object called a node. Each node consists of two parts:
+1. The data (in our case, an integer value).
+2. A reference (or "link") to the next node in the sequence.
 
 #### Node Structure:
 
@@ -14,14 +19,79 @@ public class Node
     }
 }
 ```
+
 In the above code:
 - `Value` is the data part of the node.
 - `Next` is the reference to the next node in the list. If it's the last node, `Next` will be `null`.
 
-#### Diagram:
+#### Diagram for Node:
 
 ```
++-------+    +-------+
+| Value |    | Next  | --> Next Node/Null
++-------+    +-------+
+```
+
+### LinkedList Class:
+
+The `LinkedList` class is a wrapper around the `Node` class, providing methods to manipulate the list.
+
+```csharp
+public class LinkedList
+{
+    private Node Head { get; set; }
+    ...
+}
+```
+
+- `Head`: This is a reference to the first node in the list. If the list is empty, `Head` is `null`.
+
+#### Methods:
+
+1. **Append**: Adds a node to the end of the list.
+2. **Prepend**: Adds a node to the beginning of the list.
+3. **DeleteWithValue**: Searches for a node with a specific value and deletes it from the list.
+
+#### Diagram for LinkedList:
+
+```
+Head
+ |
+ v
 Node1 [Value: 1 | Next: ref to Node2] --> Node2 [Value: 2 | Next: ref to Node3] --> Node3 [Value: 3 | Next: null]
+```
+
+### Explanation:
+
+1. **Append**: This method creates a new node and adds it to the end of the list. If the list is empty, the new node becomes the head. Otherwise, it traverses the list to find the last node and sets its `Next` reference to the new node.
+
+2. **Prepend**: This method creates a new node and sets its `Next` reference to the current head of the list. Then, it updates the head of the list to be the new node, effectively adding the new node to the beginning of the list.
+
+3. **DeleteWithValue**: This method starts by checking if the head itself has the value we want to delete. If so, it updates the head to be the next node. If not, it traverses the list looking for a node with the specified value. Once found, it updates the `Next` reference of the previous node to skip the node with the target value, effectively deleting it from the list.
+
+### Visual Representation:
+
+To better understand the operations, let's visualize them:
+
+1. **Append**:
+```
+Before: Head -> 1 -> 2 -> null
+Append(3)
+After:  Head -> 1 -> 2 -> 3 -> null
+```
+
+2. **Prepend**:
+```
+Before: Head -> 2 -> 3 -> null
+Prepend(1)
+After:  Head -> 1 -> 2 -> 3 -> null
+```
+
+3. **DeleteWithValue**:
+```
+Before: Head -> 1 -> 2 -> 3 -> null
+DeleteWithValue(2)
+After:  Head -> 1 -> 3 -> null
 ```
 
 ### Detecting a Cycle:

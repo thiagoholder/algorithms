@@ -1,4 +1,4 @@
-﻿namespace LinkedList;
+﻿namespace DataStructure;
 
 public class Node
 {
@@ -8,6 +8,5 @@ public class Node
     public Node(int value)
     {
         Value = value;
-        Next = null;
     }
 }
